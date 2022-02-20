@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "package": "baguchan.bettergolem.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
+  "refmap": "bettergolem.refmap.json",
+  "mixins": [
+    "MixinIronGolemEntity"
+  ],
+  "client": [
+    "client.MixinIronGolemModel"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
