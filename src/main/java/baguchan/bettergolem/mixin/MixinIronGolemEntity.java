@@ -19,49 +19,49 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin({IronGolem.class})
 public abstract class MixinIronGolemEntity extends AbstractGolem implements ISwingAttack {
-  private static final EntityDataAccessor<Boolean> SWING_ATTACK = SynchedEntityData.defineId(IronGolem.class, EntityDataSerializers.BOOLEAN);
+	private static final EntityDataAccessor<Boolean> SWING_ATTACK = SynchedEntityData.defineId(IronGolem.class, EntityDataSerializers.BOOLEAN);
 
-  private float swingAttackAnimationProgress;
-  
-  private float lastSwingAttackAnimationProgress;
-  
-  public MixinIronGolemEntity(EntityType<? extends AbstractGolem> type, Level worldIn) {
-    super(type, worldIn);
-  }
-  
-  @Inject(method = {"defineSynchedData"}, at = {@At("TAIL")})
-  protected void defineSynchedData(CallbackInfo callbackInfo) {
-    this.entityData.define(SWING_ATTACK, Boolean.FALSE);
-  }
-  
-  @Inject(method = {"registerGoals"}, at = {@At("TAIL")})
-  protected void registerGoals(CallbackInfo callbackInfo) {
-    this.goalSelector.addGoal(0, new SwingAttackGoal<>(this));
-  }
+	private float swingAttackAnimationProgress;
 
-  @Override
-  public void tick() {
-    super.tick();
-    if (isAlive()) {
-      this.lastSwingAttackAnimationProgress = this.swingAttackAnimationProgress;
-      if (isSwingAttack()) {
-        this.swingAttackAnimationProgress = Mth.clamp(this.swingAttackAnimationProgress + 0.2F, 0.0F, 1.0F);
-      } else {
-        this.swingAttackAnimationProgress = Mth.clamp(this.swingAttackAnimationProgress - 0.05F, 0.0F, 1.0F);
-      }
-    }
-  }
-  
-  public void setSwingAttack(boolean attack) {
-    this.entityData.set(SWING_ATTACK, attack);
-  }
-  
-  public boolean isSwingAttack() {
-    return this.entityData.get(SWING_ATTACK);
-  }
-  
-  @OnlyIn(Dist.CLIENT)
-  public float getSwingAttackAnimationScale(float ageInTicks) {
-    return this.lastSwingAttackAnimationProgress + (this.swingAttackAnimationProgress - this.lastSwingAttackAnimationProgress) * ageInTicks;
-  }
+	private float lastSwingAttackAnimationProgress;
+
+	public MixinIronGolemEntity(EntityType<? extends AbstractGolem> type, Level worldIn) {
+		super(type, worldIn);
+	}
+
+	@Inject(method = {"defineSynchedData"}, at = {@At("TAIL")})
+	protected void defineSynchedData(CallbackInfo callbackInfo) {
+		this.entityData.define(SWING_ATTACK, Boolean.FALSE);
+	}
+
+	@Inject(method = {"registerGoals"}, at = {@At("TAIL")})
+	protected void registerGoals(CallbackInfo callbackInfo) {
+		this.goalSelector.addGoal(0, new SwingAttackGoal<>(this));
+	}
+
+	@Override
+	public void tick() {
+		super.tick();
+		if (isAlive()) {
+			this.lastSwingAttackAnimationProgress = this.swingAttackAnimationProgress;
+			if (isSwingAttack()) {
+				this.swingAttackAnimationProgress = Mth.clamp(this.swingAttackAnimationProgress + 0.2F, 0.0F, 1.0F);
+			} else {
+				this.swingAttackAnimationProgress = Mth.clamp(this.swingAttackAnimationProgress - 0.05F, 0.0F, 1.0F);
+			}
+		}
+	}
+
+	public void setSwingAttack(boolean attack) {
+		this.entityData.set(SWING_ATTACK, attack);
+	}
+
+	public boolean isSwingAttack() {
+		return this.entityData.get(SWING_ATTACK);
+	}
+
+	@OnlyIn(Dist.CLIENT)
+	public float getSwingAttackAnimationScale(float ageInTicks) {
+		return this.lastSwingAttackAnimationProgress + (this.swingAttackAnimationProgress - this.lastSwingAttackAnimationProgress) * ageInTicks;
+	}
 }

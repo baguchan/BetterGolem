@@ -48,7 +48,7 @@ public abstract class MixinIronGolemModel<T extends IronGolem> extends Hierarchi
 		if (((ISwingAttack) ironGolemEntity).getSwingAttackAnimationScale(f) > 0.0D) {
 			float f2 = ((ISwingAttack) ironGolemEntity).getSwingAttackAnimationScale(f);
 			f2 = 1.0F - f2 * f2;
-			this.body.setRotation((Mth.PI / 4),0, 0);
+			this.body.setRotation((Mth.PI / 4), 0, 0);
 			this.body.setPos(0.0F, 1.0F, -8.0F);
 			this.head.setPos(0.0F, -2.0F, -6.0F);
 			setRotateAngle(this.head, 0.78F, 0.0F, 0.0F);

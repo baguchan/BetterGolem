@@ -47,12 +47,12 @@ public class BetterGolem {
 
 	@SubscribeEvent
 	public void registerAttribute(EntityJoinWorldEvent event) {
-		if(event.getEntity() instanceof IronGolem) {
-			if(((IronGolem) event.getEntity()).getAttribute(Attributes.ARMOR).getBaseValue() <= 0.0F) {
+		if (event.getEntity() instanceof IronGolem) {
+			if (((IronGolem) event.getEntity()).getAttribute(Attributes.ARMOR).getBaseValue() <= 0.0F) {
 				((IronGolem) event.getEntity()).getAttribute(Attributes.ARMOR).setBaseValue(10.0D);
 			}
 
-			if(((IronGolem) event.getEntity()).getAttribute(Attributes.ARMOR_TOUGHNESS).getBaseValue() <= 0.0F) {
+			if (((IronGolem) event.getEntity()).getAttribute(Attributes.ARMOR_TOUGHNESS).getBaseValue() <= 0.0F) {
 				((IronGolem) event.getEntity()).getAttribute(Attributes.ARMOR_TOUGHNESS).setBaseValue(1.0D);
 			}
 		}
