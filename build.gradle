@@ -20,7 +20,7 @@ mixin {
     add sourceSets.main, "bettergolem.refmap.json"
 }
 
-version = '1.18.1-1.0'
+version = '1.18.1-1.0.0'
 group = 'baguchan.bettergolem' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'bettergolem'
 
