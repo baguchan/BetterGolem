@@ -63,8 +63,9 @@ public class SwingAttackGoal<T extends Mob & ISwingAttack> extends Goal {
 	public void tick() {
 		super.tick();
 		this.attackingTimer++;
-		if (this.attackingTimer == 6)
+		if (this.attackingTimer == 6) {
 			groundAttack();
+		}
 	}
 
 	private void groundAttack() {
