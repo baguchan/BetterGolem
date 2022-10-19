@@ -59,7 +59,7 @@ public abstract class MixinIronGolemModel<T extends IronGolem> extends Hierarchi
 		} else {
 			this.body.setRotation(0, 0, 0);
 			this.body.setPos(0.0F, -7.0F, 0.0F);
-			this.head.setPos(0.0F, -7.0F, 0.0F);
+			this.head.setPos(0.0F, -7.0F, -2.0F);
 			this.rightArm.setPos(0.0F, -7.0F, 0.0F);
 			this.leftArm.setPos(0.0F, -7.0F, 0.0F);
 		}

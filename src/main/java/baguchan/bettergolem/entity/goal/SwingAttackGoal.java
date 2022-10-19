@@ -23,7 +23,7 @@ public class SwingAttackGoal<T extends Mob & ISwingAttack> extends Goal {
 
 	private int attackingTimer;
 
-	private int cooldownTimer;
+	private int cooldownTimer = -1;
 
 	public SwingAttackGoal(T mobEntity) {
 		this.mobEntity = mobEntity;
@@ -38,7 +38,7 @@ public class SwingAttackGoal<T extends Mob & ISwingAttack> extends Goal {
 		LivingEntity livingEntity = this.mobEntity.getTarget();
 		if (livingEntity != null && livingEntity.isAlive() &&
 				this.cooldownTimer <= 0) {
-			this.cooldownTimer = 40 + this.mobEntity.getRandom().nextInt(100);
+			this.cooldownTimer = 100 + this.mobEntity.getRandom().nextInt(100);
 			return livingEntity.distanceToSqr(this.mobEntity) < 32.0D && livingEntity.isOnGround() && this.mobEntity.getRandom().nextInt(3) == 0;
 		}
 		return false;

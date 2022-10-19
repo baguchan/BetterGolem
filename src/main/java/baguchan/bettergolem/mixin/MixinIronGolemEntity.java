@@ -64,4 +64,5 @@ public abstract class MixinIronGolemEntity extends AbstractGolem implements ISwi
 	public float getSwingAttackAnimationScale(float ageInTicks) {
 		return this.lastSwingAttackAnimationProgress + (this.swingAttackAnimationProgress - this.lastSwingAttackAnimationProgress) * ageInTicks;
 	}
+
 }
