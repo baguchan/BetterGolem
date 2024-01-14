@@ -2,9 +2,9 @@ package baguchan.bettergolem;
 
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraftforge.event.entity.EntityAttributeModificationEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
 
 @Mod.EventBusSubscriber(modid = BetterGolem.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class CommonEvent {

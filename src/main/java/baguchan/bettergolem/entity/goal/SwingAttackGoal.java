@@ -77,9 +77,9 @@ public class SwingAttackGoal<T extends Mob & ISwingAttack> extends Goal {
 			this.mobEntity.playSound(SoundEvents.GENERIC_EXPLODE, 1.4F, 1.4F);
 			this.mobEntity.playSound(SoundEvents.IRON_GOLEM_ATTACK, 1.0F, 1.0F);
 			for (Entity entity : this.mobEntity.level().getEntitiesOfClass(LivingEntity.class, this.mobEntity.getBoundingBox().inflate(8.0D), iMobTarget)) {
-				if (!(entity instanceof Creeper) && entity instanceof LivingEntity living && (entity instanceof Enemy || (livingEntity != null && livingEntity == entity))) {
+				if (!(entity instanceof Creeper) && (entity instanceof Enemy || (livingEntity != null && livingEntity == entity))) {
 					if (entity.onGround()) {
-						boolean flag = entity.hurt(this.mobEntity.damageSources().mobAttack(living), (float) this.mobEntity.getAttributeValue(Attributes.ATTACK_DAMAGE) * 0.75F);
+						boolean flag = entity.hurt(this.mobEntity.damageSources().mobAttack(this.mobEntity), (float) this.mobEntity.getAttributeValue(Attributes.ATTACK_DAMAGE) * 0.75F);
 
 						if (flag) {
 							entity.getDeltaMovement().add(0.0D, 0.4000000059604645D, 0.0D);
