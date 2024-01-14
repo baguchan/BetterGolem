@@ -1,13 +1,11 @@
 package baguchan.bettergolem.api;
 
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraft.world.entity.AnimationState;
 
 public interface ISwingAttack {
 	void setSwingAttack(boolean paramBoolean);
 
 	boolean isSwingAttack();
 
-	@OnlyIn(Dist.CLIENT)
-	float getSwingAttackAnimationScale(float paramFloat);
+	AnimationState slamAnimationState();
 }
